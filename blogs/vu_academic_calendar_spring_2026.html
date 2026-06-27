@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VU Academic Calendar Spring 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--surface-0);color:var(--text-primary);line-height:1.7}
+.wrap{max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+.hero{text-align:center;padding:3rem 1rem 2.5rem;border-bottom:0.5px solid var(--border);margin-bottom:2.5rem}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg-accent);color:var(--text-accent);font-size:12px;font-weight:500;padding:5px 14px;border-radius:99px;margin-bottom:1.2rem;border:0.5px solid var(--border-accent)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,42px);font-weight:800;color:var(--text-primary);line-height:1.25;margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto}
+.hero .accent{color:#185FA5}
+.hero p{font-size:16px;color:var(--text-secondary);max-width:580px;margin:0 auto 1.5rem}
+.meta-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.meta-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted)}
+.meta-dot{width:6px;height:6px;border-radius:50%;background:#185FA5}
+
+.toc{background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2.5rem}
+.toc-title{font-size:13px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.toc-links{display:flex;flex-direction:column;gap:4px}
+.toc-links a{font-size:14px;color:var(--text-accent);text-decoration:none;padding:3px 0}
+.toc-links a:hover{text-decoration:underline}
+
+.section{margin-bottom:2.5rem}
+h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--text-primary);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:2px solid #185FA5;display:inline-block}
+h3{font-size:17px;font-weight:500;color:var(--text-primary);margin:1.5rem 0 .5rem}
+p{font-size:15px;color:var(--text-secondary);margin-bottom:1rem}
+
+.highlight-box{background:var(--bg-accent);border:0.5px solid var(--border-accent);border-radius:12px;padding:1.25rem 1.5rem;margin:1.25rem 0}
+.highlight-box p{color:var(--text-accent);margin:0;font-size:14px}
+
+.cal-table-wrap{overflow-x:auto;border-radius:12px;border:0.5px solid var(--border);margin:1.25rem 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead tr{background:#185FA5}
+thead th{color:#fff;font-weight:500;padding:13px 16px;text-align:left;white-space:nowrap}
+tbody tr{border-bottom:0.5px solid var(--border)}
+tbody tr:last-child{border:none}
+tbody tr:nth-child(even){background:var(--surface-1)}
+tbody td{padding:12px 16px;color:var(--text-secondary)}
+tbody td:first-child{color:var(--text-primary);font-weight:400}
+.date-pill{display:inline-block;background:var(--bg-accent);color:var(--text-accent);font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.holiday-pill{display:inline-block;background:var(--bg-warning);color:var(--text-warning);font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.exam-pill{display:inline-block;background:var(--bg-danger);color:var(--text-danger);font-size:12px;font-weight:500;padding:3px 10px;border-radius:99px;white-space:nowrap}
+
+.key-dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:1.25rem 0}
+.key-card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;border-left:3px solid #185FA5}
+.key-card.exam{border-left-color:#A32D2D}
+.key-card.holiday{border-left-color:#854F0B}
+.key-card-label{font-size:11px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.key-card-title{font-size:14px;font-weight:500;color:var(--text-primary);margin-bottom:2px}
+.key-card-date{font-size:13px;color:var(--text-accent)}
+.key-card.exam .key-card-date{color:#A32D2D}
+.key-card.holiday .key-card-date{color:#854F0B}
+
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:1.25rem 0}
+.tip{background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:10px}
+.tip-icon{font-size:20px;flex-shrink:0}
+.tip-text{font-size:14px;color:var(--text-secondary)}
+.tip-text strong{display:block;color:var(--text-primary);font-weight:500;margin-bottom:2px}
+
+.faq{margin:1.25rem 0}
+.faq-item{border:0.5px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:1rem 1.25rem;font-size:15px;font-weight:500;color:var(--text-primary);background:var(--surface-1)}
+.faq-a{padding:.75rem 1.25rem;font-size:14px;color:var(--text-secondary);border-top:0.5px solid var(--border)}
+
+.cta-box{background:var(--surface-1);border:0.5px solid var(--border);border-radius:12px;padding:2rem;text-align:center;margin-top:2rem}
+.cta-box h3{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:.5rem;color:var(--text-primary)}
+.cta-box p{font-size:14px;color:var(--text-muted);margin-bottom:1.25rem}
+.cta-btn{display:inline-block;background:#185FA5;color:#fff;font-size:14px;font-weight:500;padding:10px 24px;border-radius:var(--radius);text-decoration:none;cursor:pointer;border:none}
+.cta-btn:hover{background:#0C447C}
+
+footer{margin-top:3rem;padding-top:1.5rem;border-top:0.5px solid var(--border);text-align:center;font-size:13px;color:var(--text-muted)}
+footer span{color:var(--text-accent)}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+</style>
+</head>
+<body>
+<h2 class="sr-only">VU Academic Calendar Spring Semester 2026 — complete schedule of important dates, exams, and holidays at Virtual University of Pakistan.</h2>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="badge">
+      <i class="ti ti-calendar" aria-hidden="true"></i>
+      Spring Semester 2026
+    </div>
+    <h1>VU Academic Calendar <span class="accent">Spring 2026</span> — Complete Date Guide</h1>
+    <p>All important dates, exam schedules, course deadlines, and holidays for Virtual University of Pakistan's Spring Semester 2026 — in one place.</p>
+    <div class="meta-row">
+      <span class="meta-item"><span class="meta-dot"></span>Virtual University of Pakistan</span>
+      <span class="meta-item"><span class="meta-dot"></span>~800 Words</span>
+      <span class="meta-item"><span class="meta-dot"></span>SEO · AIO · SGE Optimized</span>
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-links">
+      <a href="#overview">1. Overview of VU Academic Calendar 2025–2026</a>
+      <a href="#full-schedule">2. Full Spring 2026 Schedule</a>
+      <a href="#key-dates">3. Key Dates to Remember</a>
+      <a href="#exams">4. Mid-Term &amp; Final-Term Exams</a>
+      <a href="#pdf">5. How to Download VU Academic Calendar PDF</a>
+      <a href="#tips">6. How to Make the Most of the Calendar</a>
+      <a href="#faq">7. Frequently Asked Questions</a>
+    </div>
+  </div>
+
+  <div class="section" id="overview">
+    <h2>Overview of VU Academic Calendar 2025–2026</h2>
+    <p>The <strong>VU Academic Calendar 2025–2026</strong> is the official guide that outlines every critical date students at Virtual University of Pakistan need to follow. Whether you are a newly admitted student or a returning one, this calendar is your academic roadmap for the entire semester.</p>
+    <p>Spring Semester 2026 commenced on <strong>April 6, 2026</strong>, with classes running through to the Final-Term Exam on <strong>July 27, 2026</strong>. The semester is approximately four months long and includes mid-term exams, quizzes, GDBs, assignments, and a comprehensive final examination.</p>
+    <div class="highlight-box">
+      <p><strong>Important:</strong> The VU reserves the right to modify this calendar due to unforeseen circumstances, policy changes, or other institutional needs. Always verify dates on the official VU website at <strong>vu.edu.pk</strong> or your LMS portal before making plans.</p>
+    </div>
+  </div>
+
+  <div class="section" id="full-schedule">
+    <h2>Full Spring 2026 Schedule</h2>
+    <p>Below is the complete <strong>VU Academic Calendar Spring 2026</strong> — every date officially published for this semester, including deadlines, holidays, and exam dates.</p>
+    <div class="cal-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Day</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Last Date to Apply for Course Exemption / Transfer of Course Credits</td><td>Thursday</td><td><span class="date-pill">March 05, 2026</span></td></tr>
+          <tr><td>Option to Change of Study Program for Existing Students</td><td>Monday</td><td><span class="date-pill">March 09, 2026</span></td></tr>
+          <tr><td>Course Selection Link Open for Enrollment Spring 2026</td><td>Thursday</td><td><span class="date-pill">March 12, 2026</span></td></tr>
+          <tr><td>Orientation for Newly Admitted Students</td><td>Wed to Monday</td><td><span class="date-pill">Apr 01–06, 2026</span></td></tr>
+          <tr><td>Commencement of Classes – Spring 2026</td><td>Monday</td><td><span class="date-pill">April 06, 2026</span></td></tr>
+          <tr><td>Last Date to Apply for Change of Study Program</td><td>Friday</td><td><span class="date-pill">April 10, 2026</span></td></tr>
+          <tr><td>Last Date to Apply for Semester Unfreeze</td><td>Thursday</td><td><span class="date-pill">April 16, 2026</span></td></tr>
+          <tr><td>Last Date for Course Selection to Add / Drop / Replace</td><td>Thursday</td><td><span class="date-pill">April 16, 2026</span></td></tr>
+          <tr><td>Last Date to Apply for Need Based Scholarship</td><td>Thursday</td><td><span class="date-pill">April 16, 2026</span></td></tr>
+          <tr><td>Labour Day (Holiday)</td><td>Friday</td><td><span class="holiday-pill">May 01, 2026</span></td></tr>
+          <tr><td>Eid-ul-Azha (Holidays)*</td><td>Wed to Friday</td><td><span class="holiday-pill">May 27–29, 2026</span></td></tr>
+          <tr><td>Mid-Term Exam – Spring 2026</td><td>Monday</td><td><span class="exam-pill">June 01, 2026</span></td></tr>
+          <tr><td>Youm-e-Ashura (Holidays)*</td><td>Thu to Friday</td><td><span class="holiday-pill">Jun 25–26, 2026</span></td></tr>
+          <tr><td>Final-Term Exam – Spring 2026</td><td>Monday</td><td><span class="exam-pill">July 27, 2026</span></td></tr>
+          <tr><td>Independence Day (Holiday)</td><td>Friday</td><td><span class="holiday-pill">August 14, 2026</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--text-muted)">* Holiday dates subject to moon sighting confirmation.</p>
+  </div>
+
+  <div class="section" id="key-dates">
+    <h2>Key Dates to Remember</h2>
+    <p>VU has highlighted these specific dates as the most critical for students. Missing any of these can have serious academic consequences — mark them in your calendar today.</p>
+    <div class="key-dates">
+      <div class="key-card">
+        <div class="key-card-label">Classes Begin</div>
+        <div class="key-card-title">Commencement of Classes</div>
+        <div class="key-card-date">Monday, April 06, 2026</div>
+      </div>
+      <div class="key-card">
+        <div class="key-card-label">Program Change</div>
+        <div class="key-card-title">Last Date for Study Program Change</div>
+        <div class="key-card-date">Friday, April 10, 2026</div>
+      </div>
+      <div class="key-card">
+        <div class="key-card-label">Course Selection</div>
+        <div class="key-card-title">Add / Drop / Replace Courses</div>
+        <div class="key-card-date">Thursday, April 16, 2026</div>
+      </div>
+      <div class="key-card">
+        <div class="key-card-label">Scholarship</div>
+        <div class="key-card-title">Need Based Scholarship Deadline</div>
+        <div class="key-card-date">Thursday, April 16, 2026</div>
+      </div>
+      <div class="key-card exam">
+        <div class="key-card-label">Mid-Term</div>
+        <div class="key-card-title">Mid-Term Exam – Spring 2026</div>
+        <div class="key-card-date">Monday, June 01, 2026</div>
+      </div>
+      <div class="key-card exam">
+        <div class="key-card-label">Final-Term</div>
+        <div class="key-card-title">Final-Term Exam – Spring 2026</div>
+        <div class="key-card-date">Monday, July 27, 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="exams">
+    <h2>Mid-Term &amp; Final-Term Exams</h2>
+    <p>The two most critical academic events of the Spring 2026 semester are the mid-term and final-term examinations. Planning your preparation around these dates is essential for academic success.</p>
+    <h3>Mid-Term Exam – Spring 2026</h3>
+    <p>The <strong>VU Mid-Term Exam for Spring 2026</strong> is scheduled to begin on <strong>Monday, June 1, 2026</strong>. Students are advised to complete at least the first half of their course material well before this date. Mid-term exams typically cover the initial weeks of the semester and contribute significantly to the final grade.</p>
+    <h3>Final-Term Exam – Spring 2026</h3>
+    <p>The <strong>Final-Term Exam for Spring 2026</strong> begins on <strong>Monday, July 27, 2026</strong>. This is the last major assessment of the semester. Students must ensure all assignments, GDBs, and quizzes are submitted before attempting the final exam to avoid any grade penalties.</p>
+    <div class="highlight-box">
+      <p><strong>Pro Tip:</strong> Start preparing for your mid-term at least 3 weeks in advance. For the final-term, begin revision after mid-term results are announced. Consistent preparation is far more effective than last-minute cramming.</p>
+    </div>
+  </div>
+
+  <div class="section" id="pdf">
+    <h2>How to Download VU Academic Calendar PDF</h2>
+    <p>Many students search for the <strong>VU Academic Calendar 2025 PDF</strong> or want to <strong>download the VU Academic Calendar 2025-26</strong> for offline reference. Here is how you can access it:</p>
+    <div class="tips">
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">🌐</div>
+        <div class="tip-text"><strong>Official Website</strong>Visit vu.edu.pk, navigate to the Student Services section, and download the calendar PDF.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">📚</div>
+        <div class="tip-text"><strong>LMS Portal</strong>Log in to your LMS account at lms.vu.edu.pk. The academic calendar is usually pinned in the announcements section.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">📱</div>
+        <div class="tip-text"><strong>VU APEX Campus</strong>Visit vuapex.pk for the latest calendar updates, past papers, handouts, and more student resources.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>VU Academic Calendar 2025 Fall – What to Expect</h2>
+    <p>After Spring 2026 concludes, the next semester will be <strong>Fall 2026</strong>, which typically begins in September or October. VU publishes the Fall semester calendar a few weeks before it commences. Students are advised to monitor the official VU website and LMS regularly so they do not miss the Fall 2026 enrollment and course selection dates.</p>
+    <p>If you are searching for <strong>VU Academic Calendar 2025 Fall</strong> or <strong>VU Academic Calendar 2025-26 semester dates</strong>, bookmark this page and check the official portal for the most current updates as the Fall session approaches.</p>
+  </div>
+
+  <div class="section" id="tips">
+    <h2>How to Make the Most of the Calendar</h2>
+    <p>The academic calendar is not just a list of dates — it is a strategic planning tool. Here is how to use it effectively throughout the <strong>VU Academic Calendar 2025–2026</strong> period:</p>
+    <div class="tips">
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">✅</div>
+        <div class="tip-text"><strong>Course selection on time</strong>Missing the add/drop deadline means you are locked into your course list for the entire semester.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">📅</div>
+        <div class="tip-text"><strong>Plan around holidays</strong>Eid-ul-Azha and other holidays can shift your study routine — plan ahead to avoid falling behind.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">💡</div>
+        <div class="tip-text"><strong>Scholarship deadline</strong>April 16 is the last day for Need Based Scholarship applications — do not miss it.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-icon" aria-hidden="true">📝</div>
+        <div class="tip-text"><strong>Build a study plan</strong>Work backwards from exam dates to set weekly study targets for consistent progress.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">When does VU Spring 2026 semester start?</div>
+        <div class="faq-a">VU Spring 2026 classes commenced on Monday, April 6, 2026. Orientation for newly admitted students was held from April 1–6, 2026.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When is the VU Mid-Term Exam Spring 2026?</div>
+        <div class="faq-a">The Mid-Term Exam for Spring 2026 begins on Monday, June 1, 2026.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">When is the VU Final-Term Exam Spring 2026?</div>
+        <div class="faq-a">The Final-Term Exam for Spring 2026 starts on Monday, July 27, 2026.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where can I download the VU Academic Calendar 2025 PDF?</div>
+        <div class="faq-a">You can download it from VU's official website at vu.edu.pk, through your LMS portal at lms.vu.edu.pk, or via VU APEX Campus at vuapex.pk.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can VU change the academic calendar dates?</div>
+        <div class="faq-a">Yes. VU reserves the right to modify academic calendar dates due to unforeseen circumstances, government notifications, or institutional needs. Always verify dates on the official portal before making plans.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is the last date for course selection Spring 2026?</div>
+        <div class="faq-a">The last date for course selection (add/drop/replace) is Thursday, April 16, 2026. The same date applies for semester unfreeze and Need Based Scholarship applications.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>Share This With Your VU Classmates</h3>
+    <p>Help your friends stay on track — share this academic calendar guide with your study group.</p>
+    <button class="cta-btn" onclick="sendPrompt('Can you make a printable version of the VU Spring 2026 exam schedule?')">Get printable exam schedule ↗</button>
+  </div>
+
+  <footer>
+    Source: <span>vuapex.pk</span> · Virtual University of Pakistan – Official Academic Calendar Spring 2026<br>
+    <span style="color:var(--text-muted);font-size:12px;margin-top:4px;display:block">Content is for informational purposes only. Always verify on vu.edu.pk for the latest updates.</span>
+  </footer>
+
+</div>
+</body>
+</html>
